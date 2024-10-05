@@ -9,7 +9,7 @@ class Solution:
             i = 0
         min_cost += node
         if(len(cost) < 4):
-            return cost[1];
+            return cost[1]
         # Iterate through the cost list and pick the minimum cost to climb
         while i <= len(cost) - 3:  # We need to stop at least 2 steps before the end
             l = cost[i + 1]
