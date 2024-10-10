@@ -4,27 +4,25 @@ class Solution {
      * @return {number}
      */
     rob(nums) {
-        return Math.max(
-            nums[0],
-            Math.max(
-                this.helper(nums.slice(1)),
-                this.helper(nums.slice(0, -1)),
-            ),
-        );
-    }
+        const len = nums.length;
+        
+        if (len === 0) return 0; // No houses to rob
+        if (len === 1) return nums[0]; // Only one house to rob
+        
+        // Helper function to calculate max robbery for a linear array
+        const maxRob = (houses) => {
+            let previous = 0;
+            let current = 0;
 
-    /**
-     * @param {number[]} nums
-     * @return {number}
-     */
-    helper(nums) {
-        let rob1 = 0;
-            let rob2 = 0;
-        for (const n of nums) {
-            const newRob = Math.max(rob1 + n, rob2);
-            rob1 = rob2;
-            rob2 = newRob;
-        }
-        return rob2;
+            for (const amount of houses) {
+                const temp = current;
+                current = Math.max(previous + amount, current);
+                previous = temp;
+            }
+            return current;
+        };
+
+        // We need to consider two scenarios: excluding the first house or the last house
+        return Math.max(maxRob(nums.slice(1)), maxRob(nums.slice(0, len - 1)));
     }
 }
