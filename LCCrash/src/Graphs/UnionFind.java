@@ -4,10 +4,12 @@ public class UnionFind {
 	
 	private int [] root;
 	private int [] rank;
+	private int count;
  	
 	public UnionFind(int size) {
 		root = new int[size];
 		rank = new int[size];
+		count = size;
 		for (int i=0; i < size; i++) {
 			root[i] = i;
 			rank[i] = 1;
@@ -36,8 +38,14 @@ public class UnionFind {
 				root[rootY] = rootX;
 				rank[rootX] += 1;
 			}
+			count--;
 		}
 		
+		
+	}
+	
+	public int getcount() {
+		return count;
 	}
 	
 	public boolean connected(int x, int y) {
