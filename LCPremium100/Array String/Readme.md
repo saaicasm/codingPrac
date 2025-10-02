@@ -1,2 +1,2 @@
-#Curated Premium Problems
-#Solved in GO
+# Curated Premium Problems
+## Solved in GO
