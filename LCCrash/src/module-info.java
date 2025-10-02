@@ -6,4 +6,5 @@
  *
  */
 module LCCrash {
+    requires java.base;
 }
